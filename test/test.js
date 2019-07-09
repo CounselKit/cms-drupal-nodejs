@@ -40,7 +40,10 @@ describe('Server app', function () {
       uid: 666,
       clientId: 'lotestclientid'
     },
-    logLevel: 1
+    logLevel: 1,
+    socketOptions: {
+      path: '/some-other-path'
+    }
   };
 
   var serverUrl = url.format({
@@ -159,7 +162,7 @@ describe('Server app', function () {
   });
 
   it('should allow client connections with valid tokens', function(done) {
-    client = io.connect(settings.scheme + '://' + settings.host + ':' + settings.port);
+    client = io.connect(settings.scheme + '://' + settings.host + ':' + settings.port, {path: settings.socketOptions.path});
     client.on('connect', function() {
       authResult.clientId = client.nsp + '#' + client.id;
       nock(backendHost).post(backendMessagePath, bodyMatch).reply(200, authResult);
@@ -171,7 +174,7 @@ describe('Server app', function () {
   });
 
   it('should disconnect client connections with invalid tokens', function(done) {
-    client = io.connect(settings.scheme + '://' + settings.host + ':' + settings.port);
+    client = io.connect(settings.scheme + '://' + settings.host + ':' + settings.port, {path: settings.socketOptions.path});
     client.on('connect', function() {
       authResult.clientId = client.nsp + '#' + client.id;
       authResult.nodejsValidAuthToken = false;

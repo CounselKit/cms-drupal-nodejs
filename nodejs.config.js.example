@@ -97,6 +97,7 @@ settings = {
   transports: ['websocket', 'polling'],
   jsMinification: true,
   jsEtag: true,
-  logLevel: 1
+  logLevel: 1,
+  socketOptions: {}
 };
 
