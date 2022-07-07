@@ -7,22 +7,20 @@
  * contact the Drupal site using http or https. If https is used, the key and
  * cert must be set to valid files. Defaults to 'http'.
  *
- * port: Specify the TCP port that the node server should listen on. Defaults
- * to '8080'.
- *
  * host: Specify the host name or IP address that the node server should listen
  * on. Leave blank to listen for any host name. Otherwise, the server will only
  * respond to names that match the IP address given (or resolved from the given
  * name). Defaults to 'localhost'.
- *
- * resource: http path that the node server should respond to. This value needs
- * to match the Drupal node.js configuration. Defaults to '/socket.io'.
  *
  * serviceKey: An arbitrary string used as a secret between the node.js server
  * and the Drupal site.
  *
  * debug: Whether to write a bunch of debug information to the console. false
  * by default.
+ *
+ * bodyParserJsonLimit: The maximum http request body size. Defaults to 1mb.
+ * See the upstream body-parser documentation for details:
+ * https://www.npmjs.com/package/body-parser#bodyparserjsonoptions
  *
  * baseAuthPath: base path for all requests from the backend. This is used to
  * set the authentication call for all requests from the backend. Defaults to
@@ -34,7 +32,7 @@
  * sslCertPath: File system path to a certificate used for https communication
  * with the server and clients.
  *
- * sslCAPath: File system path to a file containing trusted certificates.
+ * sslCAPath: File system path to a file containing trusted certificates. (Optional)
  *
  * sslPassPhrase: SSL passphrase, will be passed in the passphrase key to the
  * https server if set.
@@ -59,25 +57,17 @@
  * extensions: An array of names of node.js modules that should be loaded as
  * extensions to the node.js server.
  *
- * clientsCanWriteToClients: global flag that allows all clients to be written
- * to by client sockets without going via the backend. Defaults to false. Be
- * careful when enabling this, it can be a security issue.
+ * port: Specify the TCP port that the node server should listen on. Defaults
+ * to '8080'.
  *
- * transports: a list of transports to be used by Socket.Io, defaults to
- * ['websocket', 'polling'].
- *
- * jsMinification: whether to call io.enable('browser client minification'),
- * defaults to 'true'.
- *
- * jsEtag: whether to call io.enable('browser client etag').
- *
- * logLevel: the log level to be used by Socket.Io, defaults to '1'.
+ * socketOptions: An object with properties to configure the Socket.io
+ * instance. See the Socket.io documentation for a list of valid values:
+ *   https://socket.io/docs/server-api/#new-Server-httpServer-options
  */
 settings = {
   scheme: 'http',
   port: 8080,
   host: 'localhost',
-  resource: '/socket.io',
   serviceKey: '',
   backend: {
     port: 80,
@@ -87,16 +77,11 @@ settings = {
     messagePath: '/nodejs/message'
   },
   debug: false,
+  bodyParserJsonLimit: '1mb',
   sslKeyPath: '',
   sslCertPath: '',
   sslCAPath: '',
   baseAuthPath: '/nodejs/',
   extensions: [],
-  clientsCanWriteToChannels: false,
-  clientsCanWriteToClients: false,
-  transports: ['websocket', 'polling'],
-  jsMinification: true,
-  jsEtag: true,
-  logLevel: 1
+  socketOptions: {}
 };
-

@@ -5,7 +5,7 @@ https://www.drupal.org/project/nodejs
 
 ## Prerequisites
 
-* [Node.js](https://nodejs.org) version 8
+* [Node.js](https://nodejs.org) version 10+
 * [Forever](https://github.com/foreverjs/forever) (optional)
 
 ## Installation
@@ -31,6 +31,10 @@ for details on the configuration values. As a minimum, you will need to set the
 `serviceKey`, and specify the location of your Drupal site in the `backend`
 property. The service key can be any arbitrary string, but be sure to enter the
 same service key in Drupal.
+
+### HTTPS
+
+If you set `scheme: 'https'` you will need to set sslKeyPath and sslCertPath
 
 ## Running the server app
 
