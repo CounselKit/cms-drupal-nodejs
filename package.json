@@ -15,14 +15,14 @@
     "test": "node_modules/.bin/mocha"
   },
   "dependencies": {
+    "body-parser": "1.19.x",
     "express": "4.17.x",
     "request": "2.88.x",
-    "body-parser": "1.19.x",
-    "socket.io": "2.3.x"
+    "socket.io": "^2.5.0"
   },
   "devDependencies": {
     "mocha": "^7.2.0",
     "nock": "10.0.x",
-    "socket.io-client": "2.2.x"
+    "socket.io-client": "^2.5.0"
   }
 }
