@@ -1,0 +1,11 @@
+POST http://localhost:8080/nodejs/content/token
+Content-Type: application/json
+NodejsServiceKey: ""
+
+{
+  "token": "a;dslfjads;lkfjsad;lkfja;d",
+  "channel": "test_channel_2",
+  "notifyOnDisconnect": false
+}
+
+###

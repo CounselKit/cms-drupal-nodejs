@@ -1,0 +1,4 @@
+GET http://localhost:8080/nodejs/health/check
+Accept: application/json
+
+###

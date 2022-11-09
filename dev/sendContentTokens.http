@@ -1,0 +1,18 @@
+POST http://localhost:8080/nodejs/content/token
+Content-Type: application/json
+NodejsServiceKey: ""
+
+[
+  {
+    "token": "{{$uuid}}",
+    "channel": "test_channel_{{$randomInt}}",
+    "notifyOnDisconnect": false
+  },
+  {
+    "token": "{{$uuid}}",
+    "channel": "test_channel_{{$randomInt}}",
+    "notifyOnDisconnect": false
+  }
+]
+
+###
