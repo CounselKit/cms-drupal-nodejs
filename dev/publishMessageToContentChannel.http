@@ -1,0 +1,17 @@
+POST http://localhost:8765/nodejs/content/token
+Content-Type: application/json
+NodejsServiceKey: lincolnlaw
+
+{
+  "token": "a;dslfjads;lkfjsad;lkfja;d",
+  "channel": "ck_nodejs_channel_task_assignee_5638",
+  "notifyOnDisconnect": false
+}
+
+###
+POST http://localhost:8765/nodejs/content/token/message HTTP/1.0
+NodejsServiceKey: lincolnlaw
+Content-type: application/json
+User-Agent: Drupal (+http://drupal.org/)
+
+{"channel":"ck_nodejs_channel_task_assignee_5638","callback":"viewsNodejs","view_id":"my_tasks","display_id":"panel_pane_1","clientSocketId":""}
